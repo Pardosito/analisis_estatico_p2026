@@ -50,12 +50,14 @@ repos:
       - id: check-github-actions
       - id: check-github-workflows
 
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.0.0
+  - repo: local
     hooks:
       - id: eslint
-        files: \.[jt]sx?$
-        types: [file]
+        name: eslint
+        entry: eslint
+        language: node
+        language_version: 20.11.0 # Ensures we use a modern Node version
+        files: \.(js|mjs|ts)$ # Runs on .js, .mjs, and .ts files
         additional_dependencies:
           - eslint@9.0.0
           - "@eslint/js"
