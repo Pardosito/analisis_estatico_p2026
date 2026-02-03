@@ -58,3 +58,5 @@ repos:
         types: [file]
         additional_dependencies:
           - eslint@9.0.0
+          - eslint
+          - "@eslint/js"
