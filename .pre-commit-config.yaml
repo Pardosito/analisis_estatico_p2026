@@ -54,11 +54,6 @@ repos:
     hooks:
       - id: eslint
         name: eslint
-        entry: eslint
-        language: node
-        language_version: 20.11.0 # Ensures we use a modern Node version
-        files: \.(js|mjs|ts)$ # Runs on .js, .mjs, and .ts files
-        additional_dependencies:
-          - eslint@9.0.0
-          - "@eslint/js"
-          - globals
+        entry: npx eslint
+        language: system
+        files: \.(js|mjs|ts)$
