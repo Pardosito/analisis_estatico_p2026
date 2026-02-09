@@ -1,0 +1,92 @@
+1. Function that checks if a given number is positive, negative, or zero.
+
+Para esta primera función, usaremos particiones. En concreto, 3.
+
+  1- Probamos el número cinco (5) y esperamos que el resultado sea: "positive"
+  2- Probamos el número menos cinco (-5) y esperamos que el resultado sea: "negative"
+  3- Probamos el número cero (0) y esperamos que el resultado sea: "zero"
+
+
+2. Function that validates user passwords.
+The password validation rules are as follows:
+
+The password must be at least 8 characters long.
+The password must contain at least one uppercase letter,
+one lowercase letter, one digit,
+and one special character (!, @, #, $, %, or &).
+
+Para esta función, usaremos tabla de decisiones, ya que tendremos diversos casos de prueba.
+
+                  Input         Output
+Test case 1       abCd1f!       Contraseña inválida. Longitud mínima de 8 caracteres.
+Test case 2       kanr!5d8ds    Contraseña inválida. Debe contener al menos una mayúscula.
+Test case 3       AKQ!5NDYd     Contraseña inválida. Debe contener al menos una minúscula.
+Test case 4       AmhK!DLgj     Contraseña inválida. Debe contener al menos un dígito.
+Test case 5       Akdmfd1kvd    Contraseña inválida. Debe contener al menos un caracter especial.
+Test case 6       Akfm1!DEdf5   Contraseña válida.
+
+3. Function that calculates the discount for a customer's purchase based on the total amount.
+The discount rules are as follows:
+
+If the total amount is less than 100, no discount is applied.
+If the total amount is between 100 and 500 (inclusive), a 10% discount is applied.
+If the total amount is greater than 500, a 20% discount is applied.
+
+Para esta función, usaremos análisis de límites. Serían mínimo cuatro (4) pruebas, los límites.
+
+  1- Probamos el límite inferior, cien (100). Y esperamos "10% discount applied".
+  2- Probamos un número antes del límite inferior, en este caso el noventa y nueve (99). Y esperamos "no discount applied".
+  3- Probamos el límite superior, quinientos (500). Y esperamos "10% discount applied".
+  4- Probamos un número después del límite superior, quinientos uno (501). Y esperamos "20% discount applied".
+
+4. Function that processes user orders in an e-commerce system.
+The function calculates the total price of the items in the order,
+applying different discounts based on the quantity of each item.
+The discount rules are as follows:
+
+If the quantity of a single item is between 1 and 5 (inclusive), no discount is applied.
+If the quantity of a single item is between 6 and 10 (inclusive), a 5% discount is applied.
+If the quantity of a single item is greater than 10, a 10% discount is applied.
+
+
+Para esta función también usaremos análisis de límites. Serían mínimo cuatro (4) pruebas, los límites.
+
+  1- Probamos el límite inferior, uno (1). Y esperamos "No discount is applied".
+  2- Probamos un número antes del límite inferior, cero (0) y también esperamos que la respuesta sea "No discount is applied"
+  3- Probamos el límite inferior del siguiente caso, seis (6). Esperamos "5% discount is applied"
+  4- Probamos un número antes del límite inferior, cinco (5), que pertenece al caso anterior. Esperamos "No discount is applied"
+  5- Probamos el límite superior, diez (10). Esperamos "5% discount is applied"
+  6- Probamos el número siguiente al límite superior, once (11). Esperamos "10% discount is applied"
+
+
+5. Function that calculates shipping costs for an online shopping system.
+The function calculates shipping costs based on the total weight of the items
+in the order and the shipping method chosen by the customer.
+The shipping cost rules are as follows:
+
+For standard shipping:
+
+If the total weight is less than or equal to 5 kg, the cost is $10.
+If the total weight is between 5 and 10 kg (inclusive), the cost is $15.
+If the total weight is greater than 10 kg, the cost is $20.
+For express shipping:
+
+If the total weight is less than or equal to 5 kg, the cost is $20.
+If the total weight is between 5 and 10 kg (inclusive), the cost is $30.
+If the total weight is greater than 10 kg, the cost is $40.
+
+Pienso que para este caso seguir con análisis de límites sigue siendo la mejor opción.
+
+Standard shipping:
+  1- Probamos el límite, cinco (5). Esperamos que el coste sea de $10
+  2- Probamos un número antes del límite, cuatro (4). Esperamos que el coste se mantenga en $10
+  3- Probamos el siguiente límite, diez (10). Esperamos que el coste sea de $15
+  4- Probamos un número menor al límite anterior, seis (6). Esperamos que el coste siga siendo de $15
+  5- Probamos un número mayor al límite anterior, once (11). Esperamos que el coste sea de $20
+
+Express shipping:
+  1- Probamos el límite, cinco (5). Esperamos que el coste sea de $20
+  2- Probamos un número antes del límite, cuatro (4). Esperamos que el coste se mantenga en $20
+  3- Probamos el siguiente límite, diez (10). Esperamos que el coste sea de $30
+  4- Probamos un número menor al límite anterior, seis (6). Esperamos que el coste siga siendo de $30
+  5- Probamos un número mayor al límite anterior, once (11). Esperamos que el coste sea de $40
