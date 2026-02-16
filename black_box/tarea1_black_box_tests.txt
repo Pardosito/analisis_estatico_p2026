@@ -1,0 +1,143 @@
+Equivalence Partitioning
+
+1. Function that validates credit card numbers.
+   - Valid card numbers: Length between 13 and 16 digits, containing only numeric digits.
+
+Test cases:
+1- Validar que toda cadena de longitud 13 contenga solo números
+2- Validar que toda cadena de longitud 14 contenga solo números
+3- Validar que toda cadena de longitud 15 contenga solo números
+4- Validar que toda cadena de longitud 16 contenga solo números
+5- Validar que la cadena cumpla la longitud requerida, sino rechazarla
+
+2. Function that validates dates.
+   - Valid years: Between 1900 and 2100.
+   - Valid months: Between 1 and 12.
+   - Valid days: Between 1 and 31.
+
+Test cases:
+Preguntas - ¿En que formato viene la fecha?
+1- Validar que el formato sea el correcto. DD-MM-YYYY o MM-DD-YYYY, etc
+2- Probar número menor a 1900 para años -> ejemplo 1850, esperando error
+3- Probar número dentro del rango de años -> ejemplo 2000, esperando éxito
+4- Probar número mayor a 2100 para años -> ejemplo 2200, esperando error
+5- Probar número menor a 1 para meses -> ejemplo 0, esperando error
+6- probar número dentro de rango de meses -> ejemplo 7, esperando éxito
+7- Probar número mayor a 12 para meses -> ejemplo 15, esperando error
+8- Probar número menor a 1 para días -> ejemplo 0, esperando error
+9- Probar número dentro de rango de días -> ejemplo 20, esperando éxito
+10- Probar número mayor a 31 para días -> ejemplo 40, esperando error
+11- Validar caso de año bisiesto
+12- Validar meses de 31 días
+13- Validar meses de 30 días
+14- Validar días si es mes febrero
+
+3. Function that checks the eligibility of a passenger to book a flight.
+   - Eligible ages: Between 18 and 65.
+   - Frequent flyers: True or False.
+
+Test cases:
+Preguntas - ¿Qué implica ser y no ser viajero frecuente?
+1- Probar un número menor a 18 -> ejemplo 15, esperando error
+2- Probar número dentro del rango esperado -> ejemplo 25, esperando éxito
+3- Probar un número mayor a 65 -> ejemplo 70, esperando error
+
+4. Function that validates URLs.
+   - Valid URLs: Length less than or equal to 255, starting with "http://" or "https://".
+
+Test cases:
+1- Probar cadena de longitud menor a 255 y con http o https-> ejemplo 150, esperando éxito
+2- Probar cadena de longitud mayor a 255 y con http o https -> ejemplo 300, esperando error
+3- Probar cadena de longitud menor a 255 y sin http o https -> ejemplo 200, esperando error
+4- Probar cadena de longitud mayor a 255 y sin http o https -> ejemplo 305, esperando error
+
+
+Boundary Value Analysis
+
+1. Function that calculates the eligibility of a person for a loan based on their income and credit score.
+   The eligibility rules are as follows:
+   - If the income is less than $30,000, the person is not eligible for a loan.
+   - If the income is between $30,000 and $60,000 (inclusive) and the credit score is above 700, the person is eligible for a standard loan.
+   - If the income is between $30,000 and $60,000 (inclusive) and the credit score is below or equal to 700, the person is eligible for a secured loan.
+   - If the income is greater than $60,000 and the credit score is above 750, the person is eligible for a premium loan.
+   - If the income is greater than $60,000 and the credit score is between 700 and 750 (inclusive), the person is eligible for a standard loan.
+
+Test cases:
+1- Probar $29,000 -> esperando error
+2- Probar $30,000 y score 700 -> secured loan
+3- Probar $30,000 y score 701 -> standard loan
+3- Probar $60,000 y score 700 -> secured loan
+4- Probar $60,000 y score 701 -> standard loan
+5- Probar $60,001 y score 751 -> premium loan
+6- Probar $60,001 y score 750 -> standard loan
+
+2. Function that determines the category of a product in an e-commerce system based on its price.
+   The product categories and pricing rules are as follows:
+   - Category A: Products priced between $10 and $50 (inclusive).
+   - Category B: Products priced between $51 and $100 (inclusive).
+   - Category C: Products priced between $101 and $200 (inclusive).
+   - Category D: Products priced above $200.
+
+Test cases:
+1- Probar producto de $49 -> esperando categoría A
+2- Probar producto de $50 -> esperando categoría A
+3- Probar producto de $99 -> esperando categoría B
+4- Probar producto de $100 -> esperando categoría B
+5- Probar producto de $199 -> esperando categoría C
+6- Probar producto de $200 -> esperando categoría C
+7- Probar producto de $201 -> esperando categoría D
+
+3. Function that calculates the cost of shipping for packages based on their weight and dimensions.
+   The shipping cost rules are as follows:
+   - If the weight of the package is less than or equal to 1 kg and the dimensions (length, width, and height) are each less than or equal to 10 cm, the cost is $5.
+   - If the weight is between 1 and 5 kg (inclusive) and the dimensions are each between 11 and 30 cm (inclusive), the cost is $10.
+   - If the weight is greater than 5 kg or any of the dimensions is greater than 30 cm, the cost is $20.
+
+Test cases:
+1- Peso de 0.99kg con L:10cm, W:10cm, H:10cm -> Costo $5
+2- Peso de 1kg con L:10cm, W:10cm, H:10cm -> Costo $5
+3- Peso de 1kg con L:9cm, W:10cm, H:10cm -> Costo $5
+4- Peso de 1kg con L:10cm, W:9cm, H:10cm -> Costo $5
+5- Peso de 1kg con L:10cm, W:10cm, H:9cm -> Costo $5
+6- Peso de 4.99kg con L:30cm, W:30cm, H:30cm -> Costo $10
+7- Peso de 5kg con L:29cm, W:30cm, H:30cm -> Costo $10
+8- Peso de 5kg con L:30cm, W:29cm, H:30cm -> Costo $10
+9- Peso de 5kg con L:30cm, W:30cm, H:29cm -> Costo $10
+10- Peso de 5.1kg con L:30cm, W:30cm, H:29cm -> Costo $20
+11- Peso de 5kg con L:31cm, W:30cm, H:30cm -> Costo $20
+11- Peso de 5kg con L:30cm, W:31cm, H:30cm -> Costo $20
+11- Peso de 5kg con L:30cm, W:30cm, H:31cm -> Costo $20
+
+
+
+Decision Table
+
+1. Create the decision table for a system that provides weather advisories based on temperature and humidity.
+   The rules are:
+   - Weather recommendation "High temperature and humidity. Stay hydrated." for temperature > 30 and humidity > 70.
+   - Weather recommendation "Low temperature. Don't forget your jacket!" for temperature < 0 and any humidity.
+   - No weather recommendation for any other temperature and humidity combination.
+
+               Input                         Output
+Test case 1    Temp: 35, Hum: 80             High temperature and humidity. Stay hydrated.
+Test case 2    Temp: -5, Hum: 50             Low temperature. Don't forget your jacket!
+Test case 3    Temp: -2, Hum: 90             Low temperature. Don't forget your jacket!
+Test case 4    Temp: 25, Hum: 50             No weather recommendation
+Test case 5    Temp: 32, Hum: 60             No weather recommendation
+Test case 6    Temp: 15, Hum: 85             No weather recommendation
+
+
+
+2. Create the decision table for a system that authenticates users based on their username and password.
+   The rules are:
+   - Returns "Admin" for username "admin" and password "admin123".
+   - Returns "User" for any other username with at least 5 characters and password with at least 8 characters.
+   - Returns "Invalid" if the username or password lenghts are not met.
+
+               Input                         Output
+Test case 1    U: admin, P: admin123         Admin
+Test case 2    U: carlos, P: password123     User
+Test case 3    U: ana, P: password123        Invalid
+Test case 4    U: roberto, P: pass1          Invalid
+Test case 5    U: bob, P: 1234               Invalid
+Test case 6    U: admin, P: wrongpass        User
