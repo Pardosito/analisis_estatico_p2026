@@ -5,7 +5,7 @@ White-box unit testing examples.
 """
 import unittest
 
-from class_exercices import (
+from white_box.class_exercices import (
     authenticate_user,
     calculate_items_shipping_cost,
     calculate_order_total,
