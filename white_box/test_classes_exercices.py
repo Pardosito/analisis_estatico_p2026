@@ -7,7 +7,7 @@ editing systems, and elevator systems.
 
 import unittest
 
-from classes_exercices import (
+from white_box.classes_exercices import (
     DocumentEditingSystem,
     ElevatorSystem,
     TrafficLight,
