@@ -3,7 +3,7 @@
 import unittest
 from unittest.mock import patch
 
-from integration_exercises import (  # pylint: disable=import-error
+from white_box.integration_exercises import (  # pylint: disable=import-error
     BankAccount,
     BankingSystem,
     Product,

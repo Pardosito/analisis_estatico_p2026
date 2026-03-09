@@ -137,7 +137,7 @@ class TestMain(unittest.TestCase):
 
     @patch("builtins.input", side_effect=["1", "4"])
     @patch("sys.stdout", new_callable=StringIO)
-    def test_display_books_empty(self, mock_stdout):
+    def test_display_books_empty(self, mock_stdout, _mock_input):
         """Choice 1 with no books prints the empty store message."""
         main()
         self.assertIn("No books in the store.", mock_stdout.getvalue())
@@ -146,7 +146,7 @@ class TestMain(unittest.TestCase):
         "builtins.input", side_effect=["3", "Dune", "Frank Herbert", "9.99", "5", "4"]
     )
     @patch("sys.stdout", new_callable=StringIO)
-    def test_add_book(self, mock_stdout):
+    def test_add_book(self, mock_stdout, _mock_input):
         """Choice 3 adds a book and confirms it was added."""
         main()
         self.assertIn("Book 'Dune' added to the store.", mock_stdout.getvalue())
@@ -156,7 +156,7 @@ class TestMain(unittest.TestCase):
         side_effect=["3", "Dune", "Frank Herbert", "9.99", "5", "1", "4"],
     )
     @patch("sys.stdout", new_callable=StringIO)
-    def test_display_books_after_adding(self, mock_stdout):
+    def test_display_books_after_adding(self, mock_stdout, _mock_input):
         """Choice 1 after adding a book shows that book's details."""
         main()
         output = mock_stdout.getvalue()
@@ -169,7 +169,7 @@ class TestMain(unittest.TestCase):
         side_effect=["3", "Dune", "Frank Herbert", "9.99", "5", "2", "Dune", "4"],
     )
     @patch("sys.stdout", new_callable=StringIO)
-    def test_search_book_found(self, mock_stdout):
+    def test_search_book_found(self, mock_stdout, _mock_input):
         """Choice 2 finds a book that was previously added."""
         main()
         output = mock_stdout.getvalue()
@@ -177,7 +177,7 @@ class TestMain(unittest.TestCase):
 
     @patch("builtins.input", side_effect=["2", "Unknown Title", "4"])
     @patch("sys.stdout", new_callable=StringIO)
-    def test_search_book_not_found(self, mock_stdout):
+    def test_search_book_not_found(self, mock_stdout, _mock_input):
         """Choice 2 reports correctly when no matching book exists."""
         main()
         self.assertIn(
@@ -186,22 +186,22 @@ class TestMain(unittest.TestCase):
 
     @patch("builtins.input", side_effect=["2", "dune", "4"])
     @patch("sys.stdout", new_callable=StringIO)
-    def test_search_is_case_insensitive(self):
+    def test_search_is_case_insensitive(self, _mock_stdout, _mock_input):
         """Search with wrong case still finds the book (tests .lower() logic)."""
-        with patch("book_store.BookStore.search_book") as mock_search:
+        with patch("white_box.book_store.BookStore.search_book") as mock_search:
             main()
             mock_search.assert_called_once_with("dune")
 
     @patch("builtins.input", side_effect=["99", "4"])
     @patch("sys.stdout", new_callable=StringIO)
-    def test_invalid_choice(self, mock_stdout):
+    def test_invalid_choice(self, mock_stdout, _mock_input):
         """An unrecognised menu choice prints the invalid choice message."""
         main()
         self.assertIn("Invalid choice. Please try again.", mock_stdout.getvalue())
 
     @patch("builtins.input", side_effect=["4"])
     @patch("sys.stdout", new_callable=StringIO)
-    def test_exit(self, mock_stdout):
+    def test_exit(self, mock_stdout, _mock_input):
         """Choice 4 exits the loop cleanly."""
         main()  # Should not loop forever or raise
         self.assertIn("Exiting...", mock_stdout.getvalue())
