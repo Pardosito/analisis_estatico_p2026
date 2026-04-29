@@ -1,6 +1,6 @@
 """Step definitions for the Google search Behave feature."""
 
-# pylint: disable=import-error
+# pylint: disable=import-error,no-name-in-module
 
 from behave import given, step, then, when  # pylint: disable=no-name-in-module
 from selenium.common.exceptions import WebDriverException
